@@ -17,15 +17,7 @@ function getTokens() {
     }
   };
 
-  return  promiseHttps.makeHttpsRequest(options,'grant_type=client_credentials').then(function(val){
-      return search(val);
-    }).then(function(val){
-      var twittsArray = val.map(function(twit){
-        twit = twit.text.split('http');
-        return {'url': 'http' + twit[1], 'title': twit[0]}
-      });
-      return twittsArray;
-    }).catch(function(err){
+  return  promiseHttps.makeHttpsRequest(options,'grant_type=client_credentials').catch(function(err){
       console.log(err)
     });
 }
@@ -45,4 +37,4 @@ function search(key){
 }
 
 exports.search = search;
-exports.getTokens = getTokens
+exports.getTokens = getTokens;
