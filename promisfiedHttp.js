@@ -1,7 +1,7 @@
 var https = require('https');
 exports.makeHttpsRequest = makeHttpsRequest
-function makeHttpsRequest(options, body, val) {
-  return new Promise(function(resolve, reject){
+function makeHttpsRequest(options, body) {
+  return new Promise(function(resolve, reject) {
     var req = https.request(options, function(response) {
       var str = ''
       response.on('data', function (chunk) {
@@ -12,5 +12,7 @@ function makeHttpsRequest(options, body, val) {
       });
     });
     req.end(body);
+  }).catch(function(err){
+    console.log(err);
   })
 }
