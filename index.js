@@ -12,14 +12,15 @@ app.get('/twitter', function(req, res){
   }).then(function(val){
       return search.search(val);
     }).then(function(val){
+
       var twittsArray = val.map(function(twit){
         twit = twit.text.split('http');
         return {'url': 'http' + twit[1], 'title': twit[0]}
       });
       return twittsArray;
     }).then(function(val){
-    res.write(JSON.stringify(val));
-    res.end();
+    res.setHeader('Content-Type', 'Application/json')
+    res.json(val);
   }).catch(function(err){
     console.log(err);
   });

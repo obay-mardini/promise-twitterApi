@@ -10,7 +10,8 @@
   });
   //send a request
   $.get('/twitter').then(function(response) {
-      response = JSON.parse(response);
+
+      
       ticker.innerHTML = Handlebars.templates.newsLinks({links:response});
       setTicker();
   });
