@@ -10,8 +10,6 @@
   });
   //send a request
   $.get('/twitter').then(function(response) {
-
-      
       ticker.innerHTML = Handlebars.templates.newsLinks({links:response});
       setTicker();
   });

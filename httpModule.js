@@ -23,7 +23,8 @@ function getTokens() {
 }
 
 function search(key){
-  options2 ={host: 'api.twitter.com',
+  options2 ={
+    host: 'api.twitter.com',
     path: '/1.1/statuses/user_timeline.json?screen_name=' + 'theOnion' + '&count=20',
     //since we are listening on a cus
     headers: {

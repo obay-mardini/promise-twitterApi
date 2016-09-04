@@ -10,6 +10,9 @@ function makeHttpsRequest(options, body) {
       response.on('end', function () {
         resolve(JSON.parse(str));
       });
+      req.on('error', function(err){
+        reject(err);
+      });
     });
     req.end(body);
   }).catch(function(err){
